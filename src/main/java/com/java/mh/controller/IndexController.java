@@ -24,4 +24,21 @@ public class IndexController {
         return mav;
     }
 
+    /**
+     *登录请求
+     */
+    @RequestMapping("/login")
+    public String login(){
+        return "/login";
+    }
+
+    /**
+     * 进入后台管理请求
+     * @return
+     */
+    @RequestMapping("/admin")
+    public String toAdmin(){
+        System.out.println("111");
+        return "/admin/main";
+    }
 }
