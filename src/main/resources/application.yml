@@ -14,3 +14,5 @@ spring:
         show-sql: true
     thymeleaf:
         cache: false
+
+imageFilePath: D://gitStore/src/main/webapp/static/cartoonImage/
