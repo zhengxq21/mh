@@ -25,6 +25,9 @@ public class Cartoon {
     @Column(length = 300)
     private String imageName; //漫画图片
 
+    @Column(length = 400)
+    private String panUrl;  //百度网盘链接
+
     private Date publishDate; //发布日期
 
     private Integer districtId;  //地区分类
@@ -103,5 +106,13 @@ public class Cartoon {
 
     public void setClick(Integer click) {
         this.click = click;
+    }
+
+    public String getPanUrl() {
+        return panUrl;
+    }
+
+    public void setPanUrl(String panUrl) {
+        this.panUrl = panUrl;
     }
 }
