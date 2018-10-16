@@ -38,7 +38,6 @@ public class IndexController {
      */
     @RequestMapping("/admin")
     public String toAdmin(){
-        System.out.println("111");
         return "/admin/main";
     }
 }
