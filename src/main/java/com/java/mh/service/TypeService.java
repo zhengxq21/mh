@@ -9,6 +9,6 @@ public interface TypeService {
      * 获得漫画类型表
      * @return
      */
-    public List<Type> getTypes();
+    List<Type> getTypes();
 
 }

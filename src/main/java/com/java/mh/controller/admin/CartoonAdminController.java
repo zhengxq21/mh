@@ -50,6 +50,9 @@ public class CartoonAdminController {
             String newFileName = DateUtil.getCurrentDateStr()+suffixName;
             cartoon.setImageName(newFileName);
         }
+
+        String[] types = type.split(",");  //获取电影类型id
+
         cartoon.setPublishDate(new Date());
         cartoon.setClick(0);
         Map<String,Object> resultMap = new HashMap<String,Object>();

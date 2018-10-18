@@ -32,8 +32,6 @@ public class Cartoon {
 
     private Integer districtId;  //地区分类
 
-    private Integer typeId;  //电影类型
-
     private Integer click;  //点击率
 
     public Integer getId() {
@@ -90,14 +88,6 @@ public class Cartoon {
 
     public void setDistrictId(Integer districtId) {
         this.districtId = districtId;
-    }
-
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
     }
 
     public Integer getClick() {
