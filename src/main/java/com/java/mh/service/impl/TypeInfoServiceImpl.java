@@ -16,13 +16,15 @@ public class TypeInfoServiceImpl implements TypeInfoService {
     private TypeInfoRepository typeInfoRepository;
 
     @Override
-    public int saveTypeInfos(List<Type> typeList, Integer cartoonId) {
+    public int saveTypeInfos(String[] types, Integer cartoonId) {
         List<TypeInfo> typeInfoList = new ArrayList<TypeInfo>();
-        for (Type type: typeList) {
+        for (int i=0;i<types.length;i++){
             TypeInfo typeInfo = new TypeInfo();
             typeInfo.setCartoonId(cartoonId);
-            typeInfo.setTypeId(type.getId());
+            typeInfo.setTypeId(Integer.parseInt(types[i]));
+            typeInfoList.add(typeInfo);
         }
+
         typeInfoRepository.saveAll(typeInfoList);
         return 0;
     }

@@ -9,5 +9,5 @@ public interface CartoonService {
     /**
      * 添加或修改漫画
      */
-    public void save(Cartoon cartoon);
+    public Cartoon save(Cartoon cartoon);
 }

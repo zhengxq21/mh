@@ -2,6 +2,7 @@ package com.java.mh.controller.admin;
 
 import com.java.mh.entity.Cartoon;
 import com.java.mh.service.CartoonService;
+import com.java.mh.service.TypeInfoService;
 import com.java.mh.util.DateUtil;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class CartoonAdminController {
 
     @Autowired
     private CartoonService cartoonService;
+    @Autowired
+    private TypeInfoService typeInfoService;
 
     @RequestMapping("/ckeditorUpload")
     public String ckeditorUpload(@RequestParam("upload")MultipartFile file,String CKEditorFuncNum)throws  Exception{
@@ -56,7 +59,10 @@ public class CartoonAdminController {
         cartoon.setPublishDate(new Date());
         cartoon.setClick(0);
         Map<String,Object> resultMap = new HashMap<String,Object>();
-        cartoonService.save(cartoon);
+        Cartoon cartoon1 =  cartoonService.save(cartoon);
+
+        typeInfoService.saveTypeInfos(types,cartoon1.getId());
+
         resultMap.put("success",true);
         return resultMap;
     }

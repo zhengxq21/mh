@@ -14,7 +14,7 @@ public class CartoonServiceImpl implements CartoonService {
     private CartoonRepository cartoonRepository;
 
     @Override
-    public void save(Cartoon cartoon) {
-        cartoonRepository.save(cartoon);
+    public Cartoon save(Cartoon cartoon) {
+         return cartoonRepository.save(cartoon);
     }
 }
