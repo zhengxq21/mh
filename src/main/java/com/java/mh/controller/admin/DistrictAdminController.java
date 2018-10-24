@@ -35,4 +35,23 @@ public class DistrictAdminController {
         return resultMap;
     }
 
+    @RequestMapping("/save")
+    public Map<String,Object> saveDistrict(District district)throws Exception{
+        districtService.save(district);
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        resultMap.put("success",true);
+        return resultMap;
+    }
+
+    @RequestMapping("/delete")
+    public Map<String,Object> deleteDistrict(@RequestParam(value = "ids") String ids)throws Exception{
+        String []idsStr = ids.split(",");
+        for (int i=0;i<idsStr.length;i++){
+            districtService.delete(Integer.parseInt(idsStr[i]));
+        }
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        resultMap.put("success",true);
+        return resultMap;
+    }
+
 }

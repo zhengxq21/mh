@@ -30,4 +30,14 @@ public class DistrictServiceImpl implements DistrictService {
     public Long getCount() {
         return districtRepository.count();
     }
+
+    @Override
+    public void save(District district) {
+         districtRepository.save(district);
+    }
+
+    @Override
+    public void delete(Integer id) {
+         districtRepository.deleteById(id);
+    }
 }

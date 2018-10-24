@@ -21,4 +21,10 @@ public interface DistrictService {
      * @return
      */
     public Long getCount();
+
+
+    public void save(District district);
+
+
+    public void delete(Integer id);
 }
