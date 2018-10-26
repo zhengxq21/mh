@@ -27,7 +27,7 @@ public class IndexController {
     /**
      *登录请求
      */
-    @RequestMapping("/login")
+    @RequestMapping("/zxqdmhxt/1/login")
     public String login(){
         return "/login";
     }

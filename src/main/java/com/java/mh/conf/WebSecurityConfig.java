@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .password(new BCryptPasswordEncoder().encode("xq123456"))
                 .roles("ADMIN");*/
 
-        auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()).withUser("cxh").password("cxh").roles("ADMIN");
+        auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()).withUser("zhengxq21").password("xq123456").roles("ADMIN");
 
     }
 
@@ -42,12 +42,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()  //其它所有路径需要身份认证
                 .and()
                 .formLogin()
-                .loginPage("/login") //指定登录请求地址
+                .loginPage("/zxqdmhxt/1/login") //指定登录请求地址
                 .defaultSuccessUrl("/admin")  //登录成功后的默认跳转页面
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/")
                 .permitAll();
     }
 }
