@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>漫画类型管理页面</title>
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.3.3/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.3.3/themes/icon.css" />
+    <script type="text/javascript" src="/static/jquery-easyui-1.3.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/static/admin/typeManage.js"></script>
 </head>
-<body>
+<body style="margin: 1px;">
+<table id="dg" title="漫画类型管理" class="easyui-datagrid" fitColumns="true"
+    pagination="true" rownumbers="true" url="/admin/type/list" toolbar="#tb">
+    <thead>
+        <tr>
+            <th field="cb" checkbox="true" align="center"></th>
+            <th field="id" width="20" align="center">编号</th>
+            <th field="typeName" width="100" align="center">类型名</th>
+        </tr>
+    </thead>
+</table>
+<div id="tb">
+    <a href="javascript:openTypeAddDialog();" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+    <a href="javascript:openTypeModifyDialog();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+    <a href="javascript:deleteType();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+</div>
+
+
+<div id="dlg" class="easyui-dialog" style="width:300px;height:120px;padding: 10px 20px;"
+    closed="true" buttons="#dlg-buttons">
+    <form id="fm" method="post">
+        <tr>
+            <td>类型名：</td>
+            <td>
+                <input type="text" name="typeName" id="typeName" class="easyui-validatebox" required="true">
+                <input type="hidden" value="" name="id" id="id">
+            </td>
+        </tr>
+    </form>
+</div>
+
+<div id="dlg-buttons">
+    <a href="javascript:saveType();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="javascript:closeTypeDialog();" class="easyui-linkbutton" iconCls="icon-cancle">关闭</a>
+</div>
 
 </body>
 </html>
