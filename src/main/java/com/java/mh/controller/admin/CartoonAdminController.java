@@ -67,4 +67,17 @@ public class CartoonAdminController {
         return resultMap;
     }
 
+    /**
+     * 分页查询动漫信息
+     * @param page
+     * @param rows
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/list")
+    public Map<String,Object> list(Cartoon cartoon,@RequestParam(value = "page",required = false)Integer page
+            ,@RequestParam(value = "row",required = false)Integer rows)throws Exception{
+        return null;
+    }
+
 }
