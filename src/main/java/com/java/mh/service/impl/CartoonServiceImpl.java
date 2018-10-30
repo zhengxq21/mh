@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -35,15 +36,34 @@ public class CartoonServiceImpl implements CartoonService {
 
             @Override
             public Predicate toPredicate(Root<Cartoon> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                return null;
+                Predicate predicate = criteriaBuilder.conjunction();
+                if (cartoon != null){
+                    if (!StringUtils.isEmpty(cartoon.getName())){
+                        predicate.getExpressions().add(criteriaBuilder.like(root.get("name"),
+                                "%"+cartoon.getName().trim()+"%"));
+                    }
+                }
+                return predicate ;
             }
         },pageable);
-        }
-        retur;
+        return cartoons.getContent();
     }
 
     @Override
-    public Integer getCount(Cartoon cartoon) {
-        return null;
+    public long getCount(Cartoon cartoon) {
+        Long count = cartoonRepository.count(new Specification<Cartoon>() {
+            @Override
+            public Predicate toPredicate(Root<Cartoon> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Predicate predicate = criteriaBuilder.conjunction();
+                if (cartoon != null){
+                    if (StringUtils.isEmpty(cartoon.getName())){
+                        predicate.getExpressions().add(criteriaBuilder.like(root.get("name"),
+                                "%"+cartoon.getName().trim()+"%"));
+                    }
+                }
+                return predicate;
+            }
+        });
+        return count;
     }
 }

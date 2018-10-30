@@ -15,5 +15,5 @@ public interface CartoonService {
 
     public List<Cartoon> list(Cartoon cartoon,Integer page,Integer rows);
 
-    public Integer getCount(Cartoon cartoon);
+    public long getCount(Cartoon cartoon);
 }
