@@ -31,7 +31,7 @@ public class CartoonServiceImpl implements CartoonService {
 
     @Override
     public List<Cartoon> list(Cartoon cartoon, Integer page, Integer rows) {
-        Pageable pageable = new PageRequest(page,rows,Sort.Direction.DESC);
+        Pageable pageable = new PageRequest(page,rows);
         Page<Cartoon> cartoons = cartoonRepository.findAll(new Specification<Cartoon>(){
 
             @Override
@@ -56,7 +56,7 @@ public class CartoonServiceImpl implements CartoonService {
             public Predicate toPredicate(Root<Cartoon> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 Predicate predicate = criteriaBuilder.conjunction();
                 if (cartoon != null){
-                    if (StringUtils.isEmpty(cartoon.getName())){
+                    if (!StringUtils.isEmpty(cartoon.getName())){
                         predicate.getExpressions().add(criteriaBuilder.like(root.get("name"),
                                 "%"+cartoon.getName().trim()+"%"));
                     }

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -76,8 +77,13 @@ public class CartoonAdminController {
      */
     @RequestMapping("/list")
     public Map<String,Object> list(Cartoon cartoon,@RequestParam(value = "page",required = false)Integer page
-            ,@RequestParam(value = "row",required = false)Integer rows)throws Exception{
-        return null;
+            ,@RequestParam(value = "rows",required = false)Integer rows)throws Exception{
+        List<Cartoon> cartoons = cartoonService.list(cartoon,page-1,rows);
+        long total = cartoonService.getCount(cartoon);
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        resultMap.put("rows",cartoons);
+        resultMap.put("total",total);
+        return resultMap;
     }
 
 }
