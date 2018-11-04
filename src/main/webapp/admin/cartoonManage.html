@@ -20,7 +20,7 @@
         <tr>
             <th field="cb" checkbox="true" align="center"></th>
             <th field="id" width="20" align="center">编号</th>
-            <th field="imageName" width="50" align="center" formatter="">漫画图片</th>
+            <th field="imageName" width="50" align="center" formatter="formatImageName">漫画图片</th>
             <th field="name" width="100" align="center">漫画名称</th>
             <th field="title" width="200" align="center">帖子标题</th>
             <th field="panUrl" width="200px" align="center">网盘链接</th>
@@ -29,8 +29,14 @@
     </thead>
 </table>
 <div id="tb">
-    <a href="javascript:openCartoonModifyTab()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
-    <a href="javascript:deleteCartoon()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+    <div>
+        <a href="javascript:openCartoonModifyTab();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
+        <a href="javascript:deleteCartoon();" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+    </div>
+    <div>
+        &nbsp;电影名称：&nbsp;<input type="text" id="s_name" size="20" onkeydown="if (event.keyCode==13) searchCartoon();">
+        <a href="javascript:searchCartoon();" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
+    </div>
 </div>
 </body>
 </html>
