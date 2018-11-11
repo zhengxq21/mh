@@ -13,7 +13,13 @@ function formatImageName(val,row){
 }
 
 function openCartoonModifyTab(){
-    
+    var selectedRows = $("#dg").datagrid("getSelections");
+    if (selectedRows.length!=1){
+        $.messager.alert("系统提示","请选择一条要修改的漫画");
+        return;
+    }
+    var row = selectedRows[0];
+    window.parent.openTab("修改漫画","modifyCartoon.html?id="+row.id,"icon-modifyFilm");
 }
 
 function deleteCartoon() {
@@ -42,13 +48,3 @@ function deleteCartoon() {
 
 }
 
-
-function openFilmModifyTab(){
-    var selectedRows = $("#dg").datagrid("getSelections");
-    if (selectedRows.length!=1){
-        $.messager.alert("系统提示","请选择一条要修改的漫画");
-        return;
-    }
-    var row = selectedRows[0];
-    window.parent.openTab("修改漫画","modifyCartoon.html?id="+row.id,"icon-modifyFilm");
-}

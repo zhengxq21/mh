@@ -86,4 +86,16 @@ public class CartoonAdminController {
         return resultMap;
     }
 
+
+    @RequestMapping("/delete")
+    public Map<String,Object> delete(@RequestParam(value = "ids")String ids)throws Exception{
+        String[] idsStr = ids.split(",");
+        for (int i = 0;i<idsStr.length;i++){
+            cartoonService.deltete(Integer.parseInt(idsStr[i]));
+        }
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        resultMap.put("success",true);
+        return resultMap;
+    }
+
 }

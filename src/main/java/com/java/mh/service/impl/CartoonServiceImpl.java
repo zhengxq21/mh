@@ -66,4 +66,9 @@ public class CartoonServiceImpl implements CartoonService {
         });
         return count;
     }
+
+    @Override
+    public void deltete(Integer id) {
+        cartoonRepository.deleteById(id);
+    }
 }

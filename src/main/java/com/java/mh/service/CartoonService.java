@@ -16,4 +16,6 @@ public interface CartoonService {
     public List<Cartoon> list(Cartoon cartoon,Integer page,Integer rows);
 
     public long getCount(Cartoon cartoon);
+
+    public void deltete(Integer id);
 }
