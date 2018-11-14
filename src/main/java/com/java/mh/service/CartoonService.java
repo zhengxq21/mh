@@ -18,4 +18,6 @@ public interface CartoonService {
     public long getCount(Cartoon cartoon);
 
     public void deltete(Integer id);
+
+    public Cartoon findById(Integer id);
 }

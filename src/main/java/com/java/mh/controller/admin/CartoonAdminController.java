@@ -98,4 +98,12 @@ public class CartoonAdminController {
         return resultMap;
     }
 
+    @RequestMapping("/findById")
+    public Cartoon findById(@RequestParam(value = "id")Integer id)throws Exception{
+        if (id != null){
+            return cartoonService.findById(id);
+        }
+        return null;
+    }
+
 }

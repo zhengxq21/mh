@@ -17,6 +17,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Optional;
 
 @Service("cartoonService")
 public class CartoonServiceImpl implements CartoonService {
@@ -70,5 +71,11 @@ public class CartoonServiceImpl implements CartoonService {
     @Override
     public void deltete(Integer id) {
         cartoonRepository.deleteById(id);
+    }
+
+    @Override
+    public Cartoon findById(Integer id) {
+        Optional<Cartoon> cartoons = cartoonRepository.findById(id);
+        return cartoons.get();
     }
 }
