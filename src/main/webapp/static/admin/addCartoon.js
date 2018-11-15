@@ -2,7 +2,7 @@ $(function(){
 
     $.ajax({
         type:'post',
-        url:'/type/getTypes',
+        url:'/admin/type/getTypes',
         data:{},
         dataType:'json',
         success:function(result){
@@ -15,12 +15,12 @@ $(function(){
             }
 
         }
-    })
+    });
 
 
     $.ajax({
         type:'post',
-        url:'/district/getDistricts',
+        url:'/admin/district/getDistricts',
         data:{},
         dataType:'json',
         success:function(result){
@@ -32,7 +32,7 @@ $(function(){
                 $("#districtCheckBox").html(districtHtml);
             }
         }
-    })
+    });
 
 });
 
