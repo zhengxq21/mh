@@ -28,4 +28,9 @@ public class TypeInfoServiceImpl implements TypeInfoService {
         typeInfoRepository.saveAll(typeInfoList);
         return 0;
     }
+
+    @Override
+    public List<TypeInfo> findTypeInfoByCartoonId(Integer cartoonId) {
+        return typeInfoRepository.findByCartoonId(cartoonId);
+    }
 }

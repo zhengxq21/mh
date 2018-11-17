@@ -23,6 +23,7 @@ $(window).on('load',function(){
         type:'post',
         url:'/admin/district/getDistricts',
         data:{},
+        async:false,
         dataType:'json',
         success:function(result){
             if (result != '' && result != null){
@@ -35,17 +36,36 @@ $(window).on('load',function(){
         }
     });
 
+
     var id = getQueryString('id');
+    $.ajax({
+        type:'post',
+        url:'/admin/typeInfo/findByCartoonId',
+        data:{'cartoonId':id},
+        async:false,
+        dataType:'json',
+        success:function(result){
+            for(var i=0;i<result.length;i++){
+                var typeId = result[i].typeId;
+                $("input[type='checkbox'][value="+typeId+"]").attr("checked",true);
+            }
+        }
+    });
+
+
         $.ajax({
         type:'post',
         url:'/admin/cartoon/findById',
         data:{id:id},
+        async:false,
         dataType:'json',
         success:function(result){
             $("#name").val(result.name);
             $("#id").val(result.id);
             $("#title").val(result.title);
             $("#panUrl").val(result.panUrl);
+            var districtId = result.districtId;
+            $("input[name='districtId'][value="+districtId+"]").attr("checked",true);
         }
     })
 

@@ -36,5 +36,4 @@ public interface TypeService {
      * @param id
      */
     void delete(Integer id);
-
 }

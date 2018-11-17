@@ -55,4 +55,9 @@ public class TypeAdminController {
         return result;
     }
 
+    public List<Type> findTypesByCartoonId(@RequestParam(value = "id",required = true)Integer id)throws Exception{
+        return null;
+    }
+
+
 }
