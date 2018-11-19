@@ -106,4 +106,13 @@ public class CartoonAdminController {
         return null;
     }
 
+
+    @RequestMapping("/update")
+    public Map<String,Object> update(Cartoon cartoon)throws Exception{
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        cartoonService.updateCartoon(cartoon);
+        resultMap.put("success",true);
+        return resultMap;
+    }
+
 }

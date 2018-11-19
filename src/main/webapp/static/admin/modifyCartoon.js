@@ -66,6 +66,7 @@ $(window).on('load',function(){
             $("#panUrl").val(result.panUrl);
             var districtId = result.districtId;
             $("input[name='districtId'][value="+districtId+"]").attr("checked",true);
+            CKEDITOR.instances.content.setData(result.content);
         }
     })
 
@@ -75,4 +76,27 @@ function getQueryString(name){
     var reg = new RegExp("(^|&amp;)"+ name +"=([^&amp;]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if (r!=null) return r[2]; return '';
+}
+
+
+function submitData(){
+    $("#fm").form("submit",{
+        url:"/admin/cartoon/save",
+        onSubmit:function(){
+            var content = CKEDITOR.instances.content.getData();
+            if (content == ""){
+                $.messager.alert("系统提示","内容不能为空");
+            }
+            return $(this).form("validate");
+        },
+        success:function (result) {
+            var result = eval('('+result+')');
+            if (result.success){
+                $.messager.alert("系统提示","更新成功");
+            }
+            else{
+                $.messager.alert("系统提示","更新失败");
+            }
+        }
+    });
 }

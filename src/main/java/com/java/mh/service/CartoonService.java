@@ -20,4 +20,6 @@ public interface CartoonService {
     public void deltete(Integer id);
 
     public Cartoon findById(Integer id);
+
+    public void updateCartoon(Cartoon cartoon);
 }

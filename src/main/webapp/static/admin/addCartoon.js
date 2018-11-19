@@ -58,6 +58,9 @@ function submitData(){
     });
 }
 
+
+
+
 function resetValue(){
     $("#name").val("");
     $("#title").val("");

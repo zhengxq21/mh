@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("cartoonService")
-public class CartoonServiceImpl implements CartoonService {
+            public class CartoonServiceImpl implements CartoonService {
 
     @Resource
     private CartoonRepository cartoonRepository;
@@ -77,5 +77,10 @@ public class CartoonServiceImpl implements CartoonService {
     public Cartoon findById(Integer id) {
         Optional<Cartoon> cartoons = cartoonRepository.findById(id);
         return cartoons.get();
+    }
+
+    @Override
+    public void updateCartoon(Cartoon cartoon) {
+        cartoonRepository.save(cartoon);
     }
 }
