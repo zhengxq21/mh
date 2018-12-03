@@ -32,6 +32,7 @@ public class StartupRunner implements CommandLineRunner,ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         application=servletContextEvent.getServletContext();
+
     }
 
     @Override
@@ -41,7 +42,7 @@ public class StartupRunner implements CommandLineRunner,ServletContextListener {
 
     @Override
     public void run(String... args) throws Exception {
-
+        this.loadData();
     }
 
     /**
@@ -49,13 +50,15 @@ public class StartupRunner implements CommandLineRunner,ServletContextListener {
      */
     public void loadData(){
         //漫画类别
+        application.setAttribute("cartoonTypeList",typeAdminService.getTypes());
 
         //漫画地区
+        application.setAttribute("cartoonDistrictList",districtService.getDistrict());
 
         //最新10条漫画
-
+        application.setAttribute("cartoonLatestTen",cartoonService.list(null,0,10));
         //最新32条漫画
-
+        application.setAttribute("cartoonLaterThirtyTwo",cartoonService.list(null,0,32));
     }
 
 }
