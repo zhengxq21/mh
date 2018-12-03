@@ -2,6 +2,7 @@ package com.java.mh.service.impl;
 
 import com.java.mh.entity.District;
 import com.java.mh.repository.DistrictRepository;
+import com.java.mh.run.StartupRunner;
 import com.java.mh.service.DistrictService;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,9 @@ public class DistrictServiceImpl implements DistrictService {
 
     @Resource
     private DistrictRepository districtRepository;
+
+    @Resource
+    private StartupRunner startupRunner;
 
     @Override
     public List<District> getDistrict() {
@@ -34,10 +38,12 @@ public class DistrictServiceImpl implements DistrictService {
     @Override
     public void save(District district) {
          districtRepository.save(district);
+         startupRunner.loadData();
     }
 
     @Override
     public void delete(Integer id) {
          districtRepository.deleteById(id);
+         startupRunner.loadData();
     }
 }

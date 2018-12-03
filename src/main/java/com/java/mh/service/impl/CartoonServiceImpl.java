@@ -2,11 +2,11 @@ package com.java.mh.service.impl;
 
 import com.java.mh.entity.Cartoon;
 import com.java.mh.repository.CartoonRepository;
+import com.java.mh.run.StartupRunner;
 import com.java.mh.service.CartoonService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
@@ -25,9 +25,14 @@ import java.util.Optional;
     @Resource
     private CartoonRepository cartoonRepository;
 
+    @Resource
+    private StartupRunner startupRunner;
+
     @Override
     public Cartoon save(Cartoon cartoon) {
-         return cartoonRepository.save(cartoon);
+        Cartoon result = cartoonRepository.save(cartoon);
+        startupRunner.loadData();
+        return result;
     }
 
     @Override
@@ -71,6 +76,7 @@ import java.util.Optional;
     @Override
     public void deltete(Integer id) {
         cartoonRepository.deleteById(id);
+        startupRunner.loadData();
     }
 
     @Override
@@ -82,5 +88,6 @@ import java.util.Optional;
     @Override
     public void updateCartoon(Cartoon cartoon) {
         cartoonRepository.save(cartoon);
+        startupRunner.loadData();
     }
 }

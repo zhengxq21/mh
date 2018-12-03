@@ -3,6 +3,7 @@ package com.java.mh.service.impl;
 import com.java.mh.entity.Type;
 import com.java.mh.entity.TypeInfo;
 import com.java.mh.repository.TypeRepository;
+import com.java.mh.run.StartupRunner;
 import com.java.mh.service.TypeService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class TypeServiceImpl implements TypeService {
 
     @Resource
     private TypeRepository typeRepository;
+
+    @Resource
+    private StartupRunner startupRunner;
 
     @Override
     public List<Type> getTypes() {
@@ -41,6 +45,7 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public void delete(Integer id) {
         typeRepository.deleteById(id);
+        startupRunner.loadData();
     }
 
 }

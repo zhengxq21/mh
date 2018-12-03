@@ -3,10 +3,12 @@ package com.java.mh.service.impl;
 import com.java.mh.entity.Type;
 import com.java.mh.entity.TypeInfo;
 import com.java.mh.repository.TypeInfoRepository;
+import com.java.mh.run.StartupRunner;
 import com.java.mh.service.TypeInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,9 @@ import java.util.List;
 public class TypeInfoServiceImpl implements TypeInfoService {
     @Autowired
     private TypeInfoRepository typeInfoRepository;
+
+    @Resource
+    private StartupRunner startupRunner;
 
     @Override
     public int saveTypeInfos(String[] types, Integer cartoonId) {
@@ -26,6 +31,7 @@ public class TypeInfoServiceImpl implements TypeInfoService {
         }
 
         typeInfoRepository.saveAll(typeInfoList);
+        startupRunner.loadData();
         return 0;
     }
 
