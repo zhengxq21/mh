@@ -1,6 +1,7 @@
 package com.java.mh.service;
 
 import com.java.mh.entity.Cartoon;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface CartoonService {
      */
     public Cartoon save(Cartoon cartoon);
 
-    public List<Cartoon> list(Cartoon cartoon,Integer page,Integer rows);
+    public List<Cartoon> list(Cartoon cartoon,Integer page,Integer rows,Sort sort);
 
     public long getCount(Cartoon cartoon);
 

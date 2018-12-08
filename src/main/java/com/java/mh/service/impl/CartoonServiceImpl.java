@@ -7,6 +7,7 @@ import com.java.mh.service.CartoonService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
@@ -36,8 +37,8 @@ import java.util.Optional;
     }
 
     @Override
-    public List<Cartoon> list(Cartoon cartoon, Integer page, Integer rows) {
-        Pageable pageable = new PageRequest(page,rows);
+    public List<Cartoon> list(Cartoon cartoon, Integer page, Integer rows, Sort sort) {
+        Pageable  pageable = new PageRequest(page,rows,sort);
         Page<Cartoon> cartoons = cartoonRepository.findAll(new Specification<Cartoon>(){
 
             @Override

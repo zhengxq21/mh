@@ -27,11 +27,11 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8">
-            <div th:include="${mainPage}::${mainPageKey}"></div>
+        <div class="col-md-9">
+
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="data_list">
                 <div class="data_list_title">
                     <img src="/static/images/dynamic_icon.png">
@@ -39,7 +39,24 @@
                 </div>
                 <div class="datas">
                     <ul>
-                        
+                        <li th:each="cartoonLatestTen:${application.cartoonLatestTenList}">
+                            <span><a target="_blank"  th:title="${cartoonLatestTen.title}" th:text="${cartoonLatestTen.name}"></a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="/static/images/hot_icon.png">
+                    热门漫画
+                </div>
+                <div class="datas">
+                    <ul>
+                        <li th:each="cartoonHotTen:${application.cartoonHotTenList}">
+                            <span><a target="_blank" th:title="${cartoonHotTen.title}" th:text="${cartoonHotTen.name}"></span>
+                        </li>
                     </ul>
                 </div>
             </div>
