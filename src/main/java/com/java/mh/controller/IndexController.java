@@ -20,6 +20,8 @@ public class IndexController {
     public ModelAndView root(){
         ModelAndView mav = new ModelAndView();
         mav.addObject("title","首页");
+        mav.addObject("mainPage","cartoon/indexCartoon");
+        mav.addObject("mainPageKey","#f");
         mav.setViewName("index");
         return mav;
     }

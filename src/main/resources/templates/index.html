@@ -5,7 +5,7 @@
     <title th:text="${title}+'-电影推酷网'">Insert title here</title>
     <link rel="stylesheet" href="/static/bootstrap3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/static/bootstrap3/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="/static/css/cartoon.css" />
+    <link rel="stylesheet" href="/static/css/cartoon.css?v=1.0" />
     <script th:inline="javascript">
         /*<![CDATA[*/
         window.onload=function(){
@@ -28,7 +28,7 @@
 
     <div class="row">
         <div class="col-md-9">
-
+            <div th:include="${mainPage}::${mainPageKey}"></div>
         </div>
 
         <div class="col-md-3">
