@@ -1,6 +1,7 @@
 package com.java.mh.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 /**
@@ -12,6 +13,7 @@ public class Cartoon {
     @GeneratedValue
     private Integer id;  //编号
 
+    @NotEmpty(message = "请输入您要搜索的漫画！")
     @Column(length = 200)
     private String name; //漫画名称
 

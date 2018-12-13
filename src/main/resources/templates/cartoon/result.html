@@ -1,0 +1,19 @@
+<meta charset="UTF-8"></meta>
+<div id="f">
+    <div class="data_list">
+        <div class="data_list_title">
+            <img src="/static/images/search_icon.png">
+            漫画搜索结果（搜索到<font color="red"><strong th:text="${total}"></strong></font>条结果&nbsp;最多显示32条结果）
+        </div>
+        <div class="datas imageDatas">
+            <ul class="imageUl">
+                <li class="imageLi" th:each="cartoon:${cartoonList}">
+                    <a target="_blank" th:href="'/cartoon/'+${cartoon.id}" th:title="${cartoon.name}">
+                        <img class="indexFilm" th:src="'/static/cartoonImage/'+${cartoon.imageName}"></img>
+                        <p th:text="${cartoon.name}"></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
