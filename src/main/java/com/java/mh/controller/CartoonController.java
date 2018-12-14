@@ -2,11 +2,13 @@ package com.java.mh.controller;
 
 import com.java.mh.entity.Cartoon;
 import com.java.mh.service.CartoonService;
+import com.java.mh.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +22,7 @@ public class CartoonController {
     @Autowired
     private CartoonService cartoonService;
 
+    @RequestMapping("/search")
     public ModelAndView search(@Valid Cartoon s_carton, BindingResult bindingResult)throws Exception{
         ModelAndView mav = new ModelAndView();
         if (bindingResult.hasErrors()){
@@ -40,5 +43,20 @@ public class CartoonController {
         }
         return mav;
     }
+
+    @RequestMapping("/list/{id}")
+    public ModelAndView list(@PathVariable(value = "id",required = false)Integer page)throws Exception{
+        ModelAndView mav = new ModelAndView();
+        List<Cartoon> cartoonList = cartoonService.list(null,page-1,20,new Sort(Sort.Direction.DESC,"publishDate"));
+        Long total = cartoonService.getCount(null);
+        mav.addObject("cartoonList",cartoonList);
+        mav.addObject("pageCode",PageUtil.genPagination("/cartoon/list",total,page,20));
+        mav.addObject("title","漫画列表");
+        mav.addObject("mainPage","cartoon/list");
+        mav.addObject("mainPageKey","#f");
+        mav.setViewName("index");
+        return mav;
+    }
+
 
 }

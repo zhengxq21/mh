@@ -17,12 +17,12 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/film/list/1"><font color="black">收录动漫</font></a></li>
+                        <li><a href="/cartoon/list/1"><font color="black">收录动漫</font></a></li>
                         <li><a href="/aboutMe"><font color="black">关于本站</font></a></li>
                     </ul>
-                    <form action="/film/search" class="navbar-form navbar-right" role="search" method="post">
+                    <form action="/cartoon/search" class="navbar-form navbar-right" role="search" method="post">
                         <div class="form-group">
-                            <input type="text" id="q" name="name" class="form-control" placeholder="请输入要查询的关键字..." th:value="${s_film==null?'':s_film.name}" />
+                            <input type="text" id="q" name="name" class="form-control" placeholder="请输入要查询的关键字..." th:value="${s_cartoon==null?'':s_cartoon.name}" />
                         </div>
                         <button type="submit" class="btn btn-default">搜索</button>
                     </form>
