@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +58,41 @@ public class CartoonController {
         mav.setViewName("index");
         return mav;
     }
+
+    @RequestMapping("/{id}")
+    public ModelAndView view(@PathVariable(value = "id",required = true)Integer id)throws Exception{
+        ModelAndView mav = new ModelAndView();
+        Cartoon cartoon = cartoonService.findById(id);
+        mav.addObject("cartoon",cartoon);
+        mav.addObject("title",cartoon.getTitle());
+        mav.addObject("pageCode",this.getUpAndDownPageCode(cartoonService.getLast(id),cartoonService.getNext(id)));
+        mav.addObject("mainPage","cartoon/view");
+        mav.addObject("mainPageKey","#f");
+        mav.setViewName("index");
+        return mav;
+    }
+
+    /**
+     * 获取下一条漫画你和上一个漫画
+     * @param
+     * @param
+     * @return
+     */
+    private String getUpAndDownPageCode(Cartoon lastCartoon,Cartoon nextCartoon){
+        StringBuffer pageCode=new StringBuffer();
+        if(lastCartoon==null || lastCartoon.getId()==null){
+            pageCode.append("<p>上一篇：没有了</p>");
+        }else{
+            pageCode.append("<p>上一篇：<a href='/film/"+lastCartoon.getId()+"'>"+lastCartoon.getTitle()+"</a></p>");
+        }
+        if(nextCartoon==null || nextCartoon.getId()==null){
+            pageCode.append("<p>下一篇：没有了</p>");
+        }else{
+            pageCode.append("<p>下一篇：<a href='/film/"+nextCartoon.getId()+"'>"+nextCartoon.getTitle()+"</a></p>");
+        }
+        return pageCode.toString();
+    }
+
 
 
 }

@@ -91,4 +91,14 @@ import java.util.Optional;
         cartoonRepository.save(cartoon);
         startupRunner.loadData();
     }
+
+    @Override
+    public Cartoon getLast(Integer id) {
+        return cartoonRepository.getLast(id);
+    }
+
+    @Override
+    public Cartoon getNext(Integer id) {
+        return cartoonRepository.getNext(id);
+    }
 }

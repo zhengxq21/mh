@@ -23,4 +23,8 @@ public interface CartoonService {
     public Cartoon findById(Integer id);
 
     public void updateCartoon(Cartoon cartoon);
+
+    public Cartoon getLast(Integer id);
+
+    public Cartoon getNext(Integer id);
 }
