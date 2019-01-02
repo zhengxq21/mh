@@ -27,4 +27,6 @@ public interface CartoonService {
     public Cartoon getLast(Integer id);
 
     public Cartoon getNext(Integer id);
+
+    public List<Cartoon> randomList(Integer n);
 }

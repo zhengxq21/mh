@@ -1,0 +1,35 @@
+<meta charset="UTF-8"></meta>
+<div id="f">
+    <div class="data_list">
+        <div class="data_list_title">
+            <img src="/static/images/view_icon.png" />
+            漫画详细信息</div>
+        <div>
+            <div class="film_title"><h3><strong th:text="${cartoon.title}"></strong></h3></div>
+        </div>
+        <div class="film_publishDate">
+            发布时间：<font th:text="${#dates.format(cartoon.publishDate,'yyyy-MM-dd HH:mm:ss')}"></font>
+        </div>
+        <div class="film_content" th:utext="${cartoon.content}">
+        </div>
+        <div class="film_lastAndNextPage" th:utext="${pageCode}"></div>
+
+    </div>
+
+
+    <div class="data_list">
+        <div class="data_list_title">
+            <img src="/static/images/guess_icon.png" />
+            猜你喜欢</div>
+        <div class="datas rImageDatas">
+            <ul class="imageUl">
+                <li class="imageLi" th:each="cartoon:${randomCartoonList}">
+                    <a target="_blank" th:href="'/cartoon/'+${cartoon.id}" th:title="${cartoon.name}">
+                        <img class="indexFilm" th:src="'/static/cartoonImage/'+${cartoon.imageName}"></img>
+                        <p th:text="${cartoon.name}"></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

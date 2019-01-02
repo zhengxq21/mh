@@ -65,6 +65,7 @@ public class CartoonController {
         Cartoon cartoon = cartoonService.findById(id);
         mav.addObject("cartoon",cartoon);
         mav.addObject("title",cartoon.getTitle());
+        mav.addObject("randomCartoonList",cartoonService.randomList(8));
         mav.addObject("pageCode",this.getUpAndDownPageCode(cartoonService.getLast(id),cartoonService.getNext(id)));
         mav.addObject("mainPage","cartoon/view");
         mav.addObject("mainPageKey","#f");
@@ -83,12 +84,12 @@ public class CartoonController {
         if(lastCartoon==null || lastCartoon.getId()==null){
             pageCode.append("<p>上一篇：没有了</p>");
         }else{
-            pageCode.append("<p>上一篇：<a href='/film/"+lastCartoon.getId()+"'>"+lastCartoon.getTitle()+"</a></p>");
+            pageCode.append("<p>上一篇：<a href='/cartoon/"+lastCartoon.getId()+"'>"+lastCartoon.getTitle()+"</a></p>");
         }
         if(nextCartoon==null || nextCartoon.getId()==null){
             pageCode.append("<p>下一篇：没有了</p>");
         }else{
-            pageCode.append("<p>下一篇：<a href='/film/"+nextCartoon.getId()+"'>"+nextCartoon.getTitle()+"</a></p>");
+            pageCode.append("<p>下一篇：<a href='/cartoon/"+nextCartoon.getId()+"'>"+nextCartoon.getTitle()+"</a></p>");
         }
         return pageCode.toString();
     }

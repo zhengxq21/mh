@@ -5,7 +5,7 @@
             <img src="/static/images/hot_icon.png"></img>
             热门电影
         </div>
-        <div class="datas imageDatas">
+        <div class="datas imageDatas ">
             <ul class="imageUl">
                 <li class="imageLi"  th:each="cartoonLaterThirtyTwo:${application.cartoonLaterThirtyTwoList}">
                     <a th:href="'/cartoon/'+${cartoonLaterThirtyTwo.id}" th:title="${cartoonLaterThirtyTwo.name}">

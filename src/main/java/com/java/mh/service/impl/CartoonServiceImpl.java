@@ -101,4 +101,9 @@ import java.util.Optional;
     public Cartoon getNext(Integer id) {
         return cartoonRepository.getNext(id);
     }
+
+    @Override
+    public List<Cartoon> randomList(Integer n) {
+        return cartoonRepository.randomList(n);
+    }
 }
